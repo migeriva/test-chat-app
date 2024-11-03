@@ -1,3 +1,7 @@
+body {
+    background-color: #181818;
+    border: none;
+}
 
 #root {
     width: 100%;
@@ -6,7 +10,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid red;
+    /* border: 1px solid red; */
+}
+
+button {
+    background-color: #181818;
+    color: white;
+    border-color: red;
 }
 
 #root > div {
@@ -17,7 +27,9 @@
     height: 50%;
     border: 2px solid red;
     border-bottom-color: black;
-    overflow: hidden;
+    /* overflow: hidden; */
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 #chat-container {
@@ -35,6 +47,7 @@ button {
     width: 100%;
     display: flex;
     align-center: center;
+    color: white;
 }
 
 .self-msg {
@@ -47,11 +60,21 @@ button {
     border: 2px dotted grey;
 }
 
+.connection-status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
 #chat-input {
     height: 100%;
     width: 90%;
-    border: 1px solid purple;
+    border: 1px solid white;
+    vertical-align: middle;
     padding-left: 10px;
+    color: white;
+    background-color: #181818;
 }
 
 #form-container {

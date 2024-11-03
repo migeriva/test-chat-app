@@ -1,5 +1,6 @@
 window.onload = () => {
 
+    var ws;
     let counter = 0;
 
     const log = document.getElementById("log-container");
@@ -15,42 +16,32 @@ window.onload = () => {
         msgSent.className="self-msg";
         
         log.appendChild(msgSent);
+        ws.send(msg.value);
 
         msg.value = "";
     }
 
+    if (window['WebSocket']) {
 
-    console.log("Test para ver si esto se actualizar rapido");
-    
-    // msgSent.innerText = msg.value;
-    // if(counter % 2 === 0) {
-    //     msgSent.className="self-msg";
-    // }else {
-    //     msgSent.className="incoming-msg";
-    // }
-    // counter++;
-
-    // if (window['WebSocket']) {
-
-    //     const ws = new WebSocket("ws://127.0.0.1:3000/chat");
+        ws = new WebSocket("ws://127.0.0.1:8888/ws");
         
-    //     ws.onclose = function (evt) {
-    //         let item = document.createElement("div");
-    //         item.innerHTML = "<b>Connection closed.</b>";
-    //     };
-    //     ws.onmessage = function (evt) {
-    //         var messages = evt.data.split('\n');
-    //         for (var i = 0; i < messages.length; i++) {
-    //             var item = document.createElement("div");
-    //             item.innerText = messages[i];
-    //         }
-    //     };
+        ws.onclose = function (evt) {
+            let item = document.createElement("div");
+            item.className = "connection-status";
+            item.innerHTML = "<b>Connection closed.</b>";
+            log.appendChild(item);
+p        };
+        
+        ws.onmessage = function (evt) {
+            var messages = evt.data.split('\n');
+            for (let i = 0; i < messages.length; i++) {
+                let item = document.createElement("div");
+                item.className = "incoming-msg";
+                item.innerText = messages[i];
+                log.appendChild(item)
+            }
+        };
 
-    //     // console.log('si hay websocket');
-    //     // const div = document.createElement("div");
-    //     // div.innerHTML = "<h1>Esto no esta sirviendo</h1>";
-    //     // form.appendChild(div);
-    // }
-    
+    }
     
 }
