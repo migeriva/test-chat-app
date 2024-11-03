@@ -30,7 +30,7 @@ window.onload = () => {
             item.className = "connection-status";
             item.innerHTML = "<b>Connection closed.</b>";
             log.appendChild(item);
-p        };
+        };
         
         ws.onmessage = function (evt) {
             var messages = evt.data.split('\n');
