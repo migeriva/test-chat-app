@@ -23,7 +23,7 @@ window.onload = () => {
 
     if (window['WebSocket']) {
 
-        ws = new WebSocket("ws://seahorse-app-wpnky.ondigitalocean.app/ws");
+        ws = new WebSocket("wss://seahorse-app-wpnky.ondigitalocean.app/ws");
         
         ws.onclose = function (evt) {
             let item = document.createElement("div");
